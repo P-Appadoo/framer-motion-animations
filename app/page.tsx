@@ -3,6 +3,7 @@
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import Hero from "./components/Hero";
 import HorizontalScrolling from "./components/HorizontalScrolling";
+import StaggeredTextAnimations from "./components/StaggeredTextAnimations";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -22,6 +23,7 @@ export default function Home() {
       />
       <Hero />
       <HorizontalScrolling />
+      <StaggeredTextAnimations />
       <div className="h-screen"></div>
     </>
   );
