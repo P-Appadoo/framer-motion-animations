@@ -67,7 +67,7 @@ const Cursor = ({
   return (
     <motion.li
       animate={position}
-      className="absolute top-0 left-0 h-7 rounded-full bg-black md:h-12"
+      className="absolute left-0 h-7 rounded-full bg-black md:h-12"
     />
   );
 };

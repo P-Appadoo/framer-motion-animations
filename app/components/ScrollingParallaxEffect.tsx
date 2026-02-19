@@ -9,29 +9,12 @@ import { useRef } from "react";
 const SECTION_HEIGHT = 1500;
 
 const ScrollingParallaxEffect = () => {
-  const target = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: target,
-    offset: ["start end", "end start"],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log("Scroll progress:", latest);
-    console.log("Opacity value:", opacity.get());
-  });
   return (
     <div
       className="relative w-full"
       style={{ height: `calc(${SECTION_HEIGHT}px + 100vh)` }}
     >
       <CenterImage />
-      <motion.div
-        ref={target}
-        className="size-56 bg-blue-700"
-        style={{ opacity }}
-      />
       <ParallaxImages />
 
       <div className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-b from-zinc-950/0 to-zinc-950" />
@@ -97,51 +80,6 @@ const ParallaxImages = () => {
   );
 };
 
-// const ParallaxImage = ({
-//   className,
-//   alt,
-//   src,
-//   start,
-//   end,
-// }: {
-//   className?: string;
-//   alt: string;
-//   src: string;
-//   start: number;
-//   end: number;
-// }) => {
-//   const ref = useRef(null);
-
-//   const { scrollYProgress } = useScroll({
-//     target: ref,
-//     offset: [`${start}px end`, `end ${end * -1}px`],
-//   });
-
-//   const y = useTransform(scrollYProgress, [0, 1], [start, end]);
-//   const opacity = useTransform(scrollYProgress, [0.75, 1], [1, 0]);
-//   const scale = useTransform(scrollYProgress, [0.75, 1], [1, 0.85]);
-
-//   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-//     console.log("Scroll progress:", latest);
-//     console.log("opacity value:", opacity.get());
-//   });
-//   const transform = useMotionTemplate`translateY(${y}px) scale(${scale})`;
-
-//   return (
-//     <>
-//       <motion.img
-//         ref={ref}
-//         style={{
-//           opacity,
-//           transform,
-//         }}
-//         src={src}
-//         alt={alt}
-//         className={className}
-//       />
-//     </>
-//   );
-// };
 const ParallaxImage = ({
   className,
   alt,
@@ -156,24 +94,35 @@ const ParallaxImage = ({
   end: number;
 }) => {
   const ref = useRef(null);
+
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"],
+    offset: [`${start}px end`, `end ${end * -1}px`],
   });
 
+  const y = useTransform(scrollYProgress, [0, 1], [start, end]);
   const opacity = useTransform(scrollYProgress, [0.75, 1], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0.75, 1], [1, 0.85]);
+
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     console.log("Scroll progress:", latest);
-    console.log("Opacity value:", opacity.get());
+    console.log("opacity value:", opacity.get());
   });
+  const transform = useMotionTemplate`translateY(${y}px) scale(${scale})`;
+
   return (
-    <motion.img
-      style={{ opacity }}
-      ref={ref}
-      src={src}
-      alt={alt}
-      className={className}
-    />
+    <>
+      <motion.img
+        ref={ref}
+        style={{
+          opacity,
+          transform,
+        }}
+        src={src}
+        alt={alt}
+        className={className}
+      />
+    </>
   );
 };
 
