@@ -1,12 +1,13 @@
-"use client";
+'use client';
 
-import { motion, useScroll, useSpring, useTransform } from "motion/react";
-import Hero from "./components/Hero";
-import HorizontalScrolling from "./components/HorizontalScrolling";
-import StaggeredTextAnimations from "./components/StaggeredTextAnimations";
-import UseAnimate from "./components/UseAnimate";
-import ScrollingParallaxEffect from "./components/ScrollingParallaxEffect";
-import { SlideTabsExample } from "./components/SlideTabs";
+import { motion, useScroll, useSpring, useTransform } from 'motion/react';
+import Hero from './components/Hero';
+import HorizontalScrolling from './components/HorizontalScrolling';
+import StaggeredTextAnimations from './components/StaggeredTextAnimations';
+import UseAnimate from './components/UseAnimate';
+import ScrollingParallaxEffect from './components/ScrollingParallaxEffect';
+import { SlideTabsExample } from './components/SlideTabs';
+import SlideImageReveal from './components/SlideImageReveal';
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -15,13 +16,13 @@ export default function Home() {
   const background = useTransform(
     scrollYProgress,
     [0, 1],
-    ["#38c47e", "#b35b5b"],
+    ['#38c47e', '#b35b5b'],
   );
 
   return (
     <>
       <motion.div
-        className="sticky top-0 w-full h-[10px] origin-left z-20"
+        className='sticky top-0 w-full h-[10px] origin-left z-20'
         style={{ scaleX, background }}
       />
       <ScrollingParallaxEffect />
@@ -30,7 +31,8 @@ export default function Home() {
       <HorizontalScrolling />
       <StaggeredTextAnimations />
       <UseAnimate />
-      <div className="h-screen"></div>
+      <SlideImageReveal />
+      <div className='h-screen'></div>
     </>
   );
 }
