@@ -49,7 +49,7 @@ const CenterImage = () => {
         opacity,
         clipPath,
         backgroundImage:
-          "url(https://images.unsplash.com/photo-1541348263662-e068662d82af?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+          "url(https://images.unsplash.com/photo-1460186136353-977e9d6085a1?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         // backgroundSize: "cover",
@@ -61,26 +61,40 @@ const CenterImage = () => {
 
 const ParallaxImages = () => {
   return (
-    <div className="relative z-10 mx-auto max-w-5xl px-4 pt-[200px]">
-      <ParallaxImage
-        alt="Mustang"
-        src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDF8fGNhcnxlbnwwfHwwfHx8MA%3D%3D"
+    <div className="mx-auto max-w-5xl px-4 pt-[200px]">
+      <ParallaxImg
+        src="https://images.unsplash.com/photo-1484600899469-230e8d1d59c0?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="And example of a space launch"
         start={-200}
         end={200}
         className="w-1/3"
       />
-      <ParallaxImage
-        alt="Mustang"
-        src="https://images.unsplash.com/photo-1494905998402-395d579af36f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGNhcnxlbnwwfHwwfHx8MA%3D%3D"
-        start={-100}
-        end={250}
+      <ParallaxImg
+        src="https://images.unsplash.com/photo-1446776709462-d6b525c57bd3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="An example of a space launch"
+        start={200}
+        end={-250}
         className="mx-auto w-2/3"
+      />
+      <ParallaxImg
+        src="https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="Orbiting satellite"
+        start={-200}
+        end={200}
+        className="ml-auto w-1/3"
+      />
+      <ParallaxImg
+        src="https://images.unsplash.com/photo-1494022299300-899b96e49893?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="Orbiting satellite"
+        start={0}
+        end={-500}
+        className="ml-24 w-5/12"
       />
     </div>
   );
 };
 
-const ParallaxImage = ({
+const ParallaxImg = ({
   className,
   alt,
   src,
